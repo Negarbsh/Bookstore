@@ -42,8 +42,3 @@ In the "Source" folder, you will find the resources of the course.
 - [Armin Saghafian](https://github.com/ArminS03)
 - [Mahdi Saber](https://github.com/elshan22)
 - [Amirreza Aranpour](https://github.com/AmirrezaAranpour)
-
-Iman Mohammadi
-
-Armin Saghafian
-
