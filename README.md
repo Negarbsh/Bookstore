@@ -10,6 +10,7 @@ This repository contains solutions to the assignments for the CE418: Systems Ana
 - [Overview](#overview)
 - [Assignments](#assignments)
 - [Exams](#exams)
+- [Quizzes](#quizzes)
 - [Slides](#slides)
 - [Project](#project)
 - [Source](#source)
@@ -22,6 +23,10 @@ In the "Assignments" folder, you will find the solutions to assignments given du
 ## Exams
 
 In the "Exams" folder, you will find the solutions to the midterm and final of the course.
+
+## Quizzes
+
+In the "Quizzes" folder, you will find the solutions to the quizzes of the course.
 
 ## Slides
 
