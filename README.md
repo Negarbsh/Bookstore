@@ -9,8 +9,8 @@ This repository contains solutions to the assignments for the CE418: Systems Ana
 
 - [Overview](#overview)
 - [Assignments](#assignments)
-- [Exams](#exams)
-- [Quizzes](#quizzes)
+- [Exam](#exam)
+- [Quiz](#quiz)
 - [Slides](#slides)
 - [Project](#project)
 - [Source](#source)
