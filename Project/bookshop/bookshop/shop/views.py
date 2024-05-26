@@ -71,7 +71,7 @@ def get_book(request, book_id):
 
 
 @csrf_exempt
-def get_books(request):
+def get_all_books(request):
     if request.method == "GET":
         books = service.get_all_books()
         if books is None:
@@ -80,6 +80,17 @@ def get_books(request):
 
     return HttpResponse("Method not allowed", status=405)
 
+
+
+@csrf_exempt
+def get_books(request, genre, author, name):
+    if request.method == "GET":
+        books = service.get_books(genre, author, name)
+        if books is None:
+            return HttpResponse("No books to show!", status=200)
+        return HttpResponse(json.dumps(books, indent=2), status=200)
+
+    return HttpResponse("Method not allowed", status=405)
 
 def jwt_auth(request):
     token = request.META.get('HTTP_AUTHORIZATION')

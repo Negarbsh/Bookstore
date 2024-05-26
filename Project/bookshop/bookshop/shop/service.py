@@ -63,6 +63,30 @@ def get_book(book_id):
 @log_error
 def get_all_books():
     books = Book.objects.all()
+    return create_books_response(books)
+
+
+@log_error
+def get_books(genre="", author="", name=""):
+    books = []
+    if name != "":
+        book = get_book(name)
+        if book != None:
+            books.append(book)
+    elif author != "":
+        if genre == "":
+            books = Book.objects.filter(author=author)
+        else:
+            books = Book.objects.filter(author=author, genre=genre)
+    elif genre != "":
+        books = Book.objects.filter(genre=genre)
+    else:
+        books = Book.objects.all()
+
+    return create_books_response(books)
+
+
+def create_books_response(books):
     ans = []
     for book in books:
         ans.append({
