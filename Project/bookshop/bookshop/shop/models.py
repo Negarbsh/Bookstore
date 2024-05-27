@@ -19,7 +19,8 @@ class Book(models.Model):
 
 class Order(models.Model):
   orderid = models.AutoField(primary_key=True)
-  userid = models.ForeignKey(to=User, to_field='userid', on_delete=models.DO_NOTHING)
-  bookid = models.ForeignKey(to=Book, to_field='bookid', on_delete=models.DO_NOTHING)
-  order_date = models.DateTimeField()
-   
+  # userid = models.ForeignKey(to=User, to_field='userid', on_delete=models.DO_NOTHING)
+  # bookid = models.ForeignKey(to=Book, to_field='bookid', on_delete=models.DO_NOTHING)
+  userid = models.CharField(max_length=255)
+  bookid = models.CharField(max_length=255)
+  order_date = models.DateTimeField(auto_now=True)

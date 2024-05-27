@@ -17,7 +17,7 @@ def signin(request):
         response = service.authenticate_user(data.get('username'), data.get('password'))
         if response is None:
             return HttpResponse("Unauthorized", status=401)
-        return HttpResponse(json.dumps({"user": response.get('user').userid, "token": response.get('token')}), status=200)
+        return HttpResponse(json.dumps({"user_id": response.get('user').userid, "token": response.get('token')}), status=200)
 
     return HttpResponse("Method not allowed", status=405)
 
@@ -101,6 +101,19 @@ def get_books(request):
         return HttpResponse(json.dumps(books, indent=2), status=200)
 
     return HttpResponse("Method not allowed", status=405)
+
+
+@csrf_exempt
+def add_order(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        order = service.add_order(userid=data.get("user_id"), book_id=data.get("book_id"))
+        response = json.dumps({"order_id": order.orderid})
+        return HttpResponse(response, status=200)
+    return HttpResponse("Method not allowed", status=405)
+
+
+
 
 def jwt_auth(request):
     token = request.META.get('HTTP_AUTHORIZATION')

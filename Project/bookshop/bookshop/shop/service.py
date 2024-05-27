@@ -1,7 +1,7 @@
 import jwt
 from .utils.decorators import log_error
 from .utils.hash import hash
-from .models import User, Book
+from .models import User, Book, Order
 
 
 @log_error
@@ -104,3 +104,12 @@ def create_books_response(books):
         })
     return ans
 
+
+@log_error
+def add_order(book_id, userid):
+    order = Order(
+        userid=userid,
+        bookid=book_id
+    )
+    order.save()
+    return order
