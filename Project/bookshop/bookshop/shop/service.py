@@ -8,6 +8,9 @@ from .models import User, Book
 def authenticate_user(username, password):
     if not username or not password:
         return None
+    exists = User.objects.filter(username=username).exists() 
+    if not exists:
+        return None
     user = User.objects.get(username = username)
     if user is None:
         return None
@@ -25,9 +28,11 @@ def signup(username, password, phone):
     if len(phone) != 11:
         return None
 
+    
     prv = User.objects.filter(username=username).exists() 
     if prv:
         return "Username exists"
+
 
     password_hash = hash(password)
     user = User(
@@ -70,9 +75,9 @@ def get_all_books():
 def get_books(genre="", author="", name=""):
     books = []
     if name != "":
-        book = get_book(name)
+        book = Book.objects.filter(name=name)
         if book != None:
-            books.append(book)
+            books.append(book[0])
     elif author != "":
         if genre == "":
             books = Book.objects.filter(author=author)
@@ -98,3 +103,4 @@ def create_books_response(books):
             "price": book.price
         })
     return ans
+

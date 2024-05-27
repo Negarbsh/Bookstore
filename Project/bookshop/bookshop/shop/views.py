@@ -39,8 +39,8 @@ def signup(request):
 
 @csrf_exempt
 def add_book(request):
-    if not jwt_auth(request):
-        return HttpResponse("UnAuthorized!", status=401)
+    # if not jwt_auth(request):
+    #     return HttpResponse("UnAuthorized!", status=401)
     if request.method == "POST":
         data = json.loads(request.body)
         response = service.add_book(data.get("name"), data.get("author"), data.get("price"), data.get("description"), data.get("genre"))
@@ -83,8 +83,18 @@ def get_all_books(request):
 
 
 @csrf_exempt
-def get_books(request, genre, author, name):
+def get_books(request):
     if request.method == "GET":
+        genre = request.GET.get("genre")
+        author = request.GET.get("author")
+        name = request.GET.get("name")
+        
+        if not genre:
+            genre = ""
+        if not author:
+            author = ""
+        if not name:
+            name = ""
         books = service.get_books(genre, author, name)
         if books is None:
             return HttpResponse("No books to show!", status=200)

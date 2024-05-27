@@ -17,3 +17,9 @@ class Book(models.Model):
     price = models.IntegerField(default=80000)
 
 
+class Order(models.Model):
+  orderid = models.AutoField(primary_key=True)
+  userid = models.ForeignKey(to=User, to_field='userid', on_delete=models.DO_NOTHING)
+  bookid = models.ForeignKey(to=Book, to_field='bookid', on_delete=models.DO_NOTHING)
+  order_date = models.DateTimeField()
+   
