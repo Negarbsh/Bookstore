@@ -9,7 +9,6 @@ urlpatterns = [
 	path('book/<int:book_id>', views.get_book, name="book"),
 	path('all_books', views.get_all_books, name="books"),
 	path('books', views.get_books, name="search"),
-	path('add_order', views.add_order, name="add_order")
-	# path('category/<int:id>', views.get_book_category, name="category"),
-	# path('writer/<int:id>', views.get_writer, name = "writer"),
+	path('add_order', views.add_order, name="add_order"),
+	path('orders/<int:user_id>', views.get_orders, name="orders")
 ]

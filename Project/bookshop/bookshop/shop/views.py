@@ -113,6 +113,12 @@ def add_order(request):
     return HttpResponse("Method not allowed", status=405)
 
 
+@csrf_exempt
+def get_orders(request, user_id):
+    if request.method == "GET":
+        orders = service.get_orders(user_id)
+        return HttpResponse(json.dumps({"orders": orders}), status=200)
+    return HttpResponse("Method not allowed", status=405)
 
 
 def jwt_auth(request):

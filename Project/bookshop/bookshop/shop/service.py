@@ -113,3 +113,19 @@ def add_order(book_id, userid):
     )
     order.save()
     return order
+
+
+@log_error
+def get_orders(userid):
+    orders = Order.objects.filter(userid=userid)
+    return create_orders_response(orders)
+
+
+def create_orders_response(orders):
+    ans = []
+    for order in orders:
+        ans.append({
+            "user_id": order.userid,
+            "book_id": order.bookid
+        })
+    return ans
